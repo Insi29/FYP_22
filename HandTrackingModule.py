@@ -30,11 +30,13 @@ class MathewApp:
         pred_class = 0
         break_taken = False
         res_list = deque(maxlen=512)
+        
         while cap.isOpened():
             idx_to_coordinates = {}
             ret, image = cap.read()
             image = cv2.flip(image, 1)
             image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+            img_counter=0
             results_hand = hands.process(image)
             image.flags.writeable = True
             image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
@@ -100,9 +102,16 @@ class MathewApp:
                                 cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 255), 3)
             cv2.imshow("Res", rescale_frame(image, percent=100))
             cv2.imshow("BB", rescale_frame(blackboard, percent=100))
-
+            k = cv2.waitKey(2)
             if cv2.waitKey(5) & 0xFF == 27:
                 break
+           
+            elif k%256 == 32:
+                # SPACE pressed
+                img_name = "E:\insia\MY FILES\DOWNLOAD\opencv\Mathew\Mathew\opencv_frame_{}.png".format(img_counter)
+                cv2.imwrite(img_name, blackboard)
+                print("{} written!".format(img_name))
+                img_counter += 1
         hands.close()
         cap.release()
 a=MathewApp()
