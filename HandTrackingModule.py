@@ -7,7 +7,8 @@ import numpy as np
 #from MathewModel import MathewModel
 from src.utils.cv_utils import get_idx_to_coordinates, rescale_frame
 from src.utils.utils import solve_eqn
-from src.utils.digit_recognition import predict
+from src.utils.Emnist_recognition import predict
+# from src.utils.Mnist_recognition import mnist_predict
 from src.utils.ocr import ocr
 #from src.utils.Capture import capture
 
@@ -119,7 +120,7 @@ class MathewApp:
                 img_counter += 1
                 print('File path:',img_name)
                 #prediction of text
-                res=ocr(img_name)
+                res=predict(img_name)
                 print('Text generatd',res)
                 image = cv2.putText(image, str(res), (920, 50),
                                     cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 255), 3)
