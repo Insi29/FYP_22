@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head> {% load static %} 
+    <link rel="stylesheet" type="text/css" href={% static 'css/styles_home.css' %} >
+    <link rel="stylesheet" type="text/css" href={% static 'css/styles_topnav.css' %} >
+    <title>Air Writing </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    
+</head>
+
+<body>
+    <div class="topnav">
+        <img src={% static 'images/logo.png' %} class="logo" />
+        <a href={% url "our_team" %}>Team</a>
+        <a href={% url "about" %}>About</a>
+        <a href={% url "home" %}>Home</a>
+        
+        
+    </div>
+    <div class="wrapper">
+       <div class="background-container">
+            <div class="container">
+                <div class="image-container">
+                    <video width='500' height= '300' controls>
+                        <source src="{% static 'video/demo.mp4' type='video/mp4' %}">
+                    </video>
+                 
+                </div>
+
+                <div class="button-container">
+                    <h1>Live Demo</h1>
+                    <form action={% url 'ocr_model' %} method="post"> 
+                        {% csrf_token %}
+                        <img src={% static 'images/arrr.png' %} />
+                        <input type="submit" value="Cursive Writing">  
+                    </form>
+                    <form action={% url 'ml_model' %} method="post"> 
+                        {% csrf_token %}
+                        <img src={% static 'images/arrr.png' %} />
+                        <input type="submit" value="Simple Writing">          
+                    </form>
+                </div>
+            
+            </div>
+        </div>
+    </div>
+    
+
+</body>
+
+</html>

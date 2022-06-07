@@ -1,0 +1,28 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+.topnav {
+    overflow: hidden;
+    background: linear-gradient(30deg, #b2d3e8,#000080);
+    font-weight: 700;
+}
+
+.topnav a {
+    margin-top: 8px;
+    float: right;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.logo {
+    float: left;
+    width: 120px;
+    cursor: pointer;
+}
