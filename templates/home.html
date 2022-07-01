@@ -30,16 +30,23 @@
 
                 <div class="button-container">
                     <h1>Live Demo</h1>
-                    <form action={% url 'ocr_model' %} method="post" id="success"> 
+                    <form action={% url 'ocr_model' %} method="post" id="success_ocr"> 
+                        
                         {% csrf_token %}
                         <img src={% static 'images/arrr.png' %} />
-                        <input type="submit" value="Cursive Writing">  
+                        <button class="btn btn-primary">
+                            <span class="spinner-border spinner-border-sm" style='display:none' id="loading_ocr"></span>
+                            Cursive Writing
+                          </button>
                     </form>
                    
-                    <form action={% url 'ml_model' %} method="post" > 
+                    <form action={% url 'ocr_model' %} method="post" id="success_ml"> 
                         {% csrf_token %}
                         <img src={% static 'images/arrr.png' %} />
-                        <input type="submit" value="Simple Writing">          
+                        <button class="btn btn-primary">
+                            <span class="spinner-border spinner-border-sm" style='display:none' id="loading_ml"></span>
+                            Simple Writing
+                          </button>          
                     </form>
                      
                 </div>
@@ -48,74 +55,65 @@
         </div>
     </div>
 <!-- Loader work-->
- <style>
-    .overlay{
-        display: none;
-        visibility:hidden;
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        z-index: 999;
-        background: rgba(255,255,255,0.8) url({% static 'images/load.gif' %} ) center no-repeat;
-    }
-    body{
-        text-align: center;
-    }
-    /* Turn off scrollbar when body element has the loading class */
-    body.loading{
-        overflow: hidden;   
-    }
-    /* Make spinner image visible when body element has the loading class */
-    body.loading .overlay{
-        display: block;
-    }
-</style>
+
 
 
 <script>
-   
-// Initiate an Ajax request on button click
-$(document).on("click", "button", function(){
-    // Adding timestamp to set cache false
-    $.get({% url 'ocr_model' %}, function(data){
-       
-    });       
-});
+      $('#success_ocr').submit(function() {
+        $('#loading_ocr').show(); 
+        return true;
+        
+      });  
+      $(window).load(function() {
+        $('#loading_ocr').hide();
 
+      });
+     
+</script>
+<script>
+        $('#success_ml').submit(function() {
+            $('#loading_ml').show(); 
+        
+          });  
+          $(window).load(function() {
+            $('#loading_ml').hide();
+          });
+</script>
 
+      {% comment %} /*
+      $(document).on("click", "btn1", function(){
+        // Adding timestamp to set cache false
+        $.get({% url 'ocr_model' %}{
+        });       
+    });
+      $(document).on({
+
+        $("#loading").ajaxStart(function () {
+         $(this).show();
+         });
+     
+        $("#loading").ajaxStop(function () {
+         $(this).hide();
+         });
+     });*/ {% endcomment %}
+
+  
+     {% comment %} $(window).on('load', function () {
+        $('loader').hide();
+      })  {% endcomment %}
+{% comment %} 
 // Add remove loading class on body element depending on Ajax request status
-$(document).on({
+/* $(document).on({
     ajaxStart: function(){
         $("body").addClass("loading"); 
-    },
+    }
     ajaxStop: function(){ 
         $("body").removeClass("loading"); 
     }    
-});  
+});   */
 
-/* $(document).on("click", "button", function(){
-    // Adding timestamp to set cache false
-    $.get({% url 'ocr_model' %}, function(){
-        myvar();
-    });       
-});
+ {% endcomment %}
 
-
-// Add remove loading class on body element depending on Ajax request status
-function myvar(){
-    $("loading").css('visibility','visible');
-    $("loading").show(); 
-}
-  */
-
-</script>
-
-    <button type="button">Get Customers Details</button>
-    <h3>Click the above button to get the customers details from the web server via Ajax.</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante. Vestibulum id metus ac nisl bibendum scelerisque non non purus. Suspendisse varius nibh non aliquet sagittis. In tincidunt orci sit amet elementum vestibulum. Vivamus fermentum in arcu in aliquam. Quisque aliquam porta odio in fringilla. Vivamus nisl leo, blandit at bibendum eu, tristique eget risus. Integer aliquet quam ut elit suscipit, id interdum neque porttitor. Integer faucibus ligula.</p>
-    <div class="overlay"></div> 
 
 
 </body>
