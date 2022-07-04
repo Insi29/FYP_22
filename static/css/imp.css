@@ -1,0 +1,98 @@
+
+  h1 {
+    text-align: center;
+  }
+  .container {
+    margin-top: 30px;
+    display: flex;
+  }
+  .container .card {
+
+    flex: 1;
+    margin: 10px;
+    text-align: center;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  .container .card .title {
+    text-transform: uppercase;
+    font-size: 25px;
+    font-weight: bold;
+    padding: 15px;
+    padding-bottom: 60px;
+    color: #ffffff;
+  }
+    
+  .container .card .circle {
+
+    box-sizing: border-box;
+    font-size: 35px;
+    font-weight: bold;
+    background-color: #000000;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -60px auto 0px auto;
+    z-index: 2;
+    position: relative;
+    box-shadow: inset 0px -10px 8px -8px rgba(0, 0, 0, 0.5);
+  }
+  .container .card .content {
+    
+    padding: 15px;
+    padding-top: 45px;
+    margin-top: -45px;
+    background-color: #ffffff;
+    box-shadow: 0px -4px 5px rgba(0, 0, 0, 0.15);
+  }
+  .container .card .icon {
+    margin-top: 10px;
+    font-size: 50px;
+  }
+  .container .card:nth-child(1) .title, .container .card:nth-child(1) .circle {
+    
+    background-color: #1b73ba;
+  }
+  .container .card:nth-child(1) .icon {
+
+      color: #1b73ba;
+    
+  }
+  .container .card:nth-child(2) .title, .container .card:nth-child(2) .circle {
+      background-color: #e34f26;
+  }
+  .container .card:nth-child(2) .icon {
+    
+    color: #e34f26;
+  }
+  .container .card:nth-child(3) .title, .container .card:nth-child(3) .circle {
+    background-color: #f6b89e;
+  }
+  .container .card:nth-child(3) .icon {
+    color: #f6b89e;
+  }
+  .container .card:nth-child(4) .title, .container .card:nth-child(4) .circle {
+    background-color:plum;
+  }
+  .container .card:nth-child(4) .icon {
+    color: pl;
+  }
+  .container .card:nth-child(5) .title, .container .card:nth-child(5) .circle {
+    background-color: #f9e075;
+  }
+  .container .card:nth-child(5) .icon {
+    color:#f9e075;
+  }
+  @media (max-width: 767px) {
+    .container {
+      flex-wrap: wrap;
+    }
+    .container .card {
+      flex: 0 0 100%;
+    }
+  }

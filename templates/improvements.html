@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>{% load static %} 
+  <meta charset="UTF-8">
+  <title>Improvements</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css'>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href={% static 'css/imp.css' %} >
+  <link rel="stylesheet" type="text/css" href={% static 'css/styles_topnav.css' %} >
+</head>
+<body>
+  <div class="topnav"   >
+    <img src={% static 'images/logo.png' %}  style="width: 130px;" class="logo" />
+    <a href={% url "improvements" %}>Improvements</a>
+    <a href={% url "our_team" %}>Team</a>
+    <a href={% url "about" %}>About</a>
+    <a href={% url "home" %}>Home</a>
+    
+    
+</div>
+ <h1 style="font-family:Georgia, 'Times New Roman', Times, serif;color:navy;
+ font-weight: 700;text-align: center;margin-top: 2pc;font-size: 50px;">Improvements</h1>
+<div class="container">
+  <div class="card">
+    <div class="title">
+    
+    </div>
+    <div class="circle">1</div>
+    <div class="content">
+      <h3 style="margin-top: 10px;">Sentences</h3>
+      <p style="margin-top: 10px;">The system should be able to recognize the whole sentences</p>
+      <div class="icon">
+        <img src='../static/images/sen.gif' style="
+        width: 90px;
+        cursor: pointer;align-items: center;"  >
+      </div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="title">
+    
+    </div>
+    <div class="circle">2</div>
+    <div class="content">
+      <h3 style="margin-top: 10px;">Special Characters</h3>
+      <p style="margin-top: 10px;">The system should be able to recognize special characters.
+        (@,$,#)</p>
+      <div class="icon">
+        <img src='../static/images/chaa.gif' style="
+        width: 60px;
+        cursor: pointer;align-items: center;"  >
+            </div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="title">
+        
+    </div>
+    <div class="circle">3</div>
+    <div class="content">
+      <h3 style="margin-top: 10px;">Accuracy</h3>
+      <p style="margin-top: 10px;">The Accuracy of the system can be improved.</p>
+      <div class="icon">
+        <img src='../static/images/a.gif' style="
+        width: 120px;
+        cursor: pointer;align-items: center;"  >
+      </div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="title">
+    
+    </div>
+    <div class="circle">4</div>
+    <div class="content">
+      <h3 style="margin-top: 10px;">Shapes</h3>
+      <p style="margin-top: 10px;">The system should be able to recognize shapes.
+        (Circle,Square,Triangle)</p>
+      <div class="icon">
+        <img src='../static/images/s.gif' style="
+        width: 100px;
+        cursor: pointer;align-items: center;"  >
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="title">
+    
+    </div>
+    <div class="circle">5</div>
+    <div class="content">
+      <h3 style="margin-top: 10px;">Languages</h3>
+      <p style="margin-top: 10px;">The system should be able to recognize differtent languages.
+        (Urdu,French,Arabic)</p>
+      <div class="icon">
+        <img src='../static/images/lang.gif' style="
+        width: 90px;
+        cursor: pointer;align-items: center;"  >
+      </div>
+    </div>
+  </div>
+    
+    
+</div>
+  
+</body>
+</html>

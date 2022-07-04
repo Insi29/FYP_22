@@ -1,0 +1,42 @@
+*{
+    font-size: 'Roboto', sans-serif;;
+}
+.container h1{
+    margin-top: 2pc;
+    font-size: 50px;
+    text-align: center;
+} 
+
+.our-team .pic{
+    margin-top: 1pc;
+    display: inline-block;
+    padding: 10px;
+    margin-bottom: 25px;
+    transition: all 0.5s ease 0s;
+}
+
+.our-team:hover .pic{
+    background: #b2d3e8;
+    border-radius: 50%;
+}
+
+.pic img{
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+.our-team .title{
+    display: block;
+    font-size: 20px;
+    font-weight: 600;
+    color: #2e282a;
+    text-transform: uppercase;
+    margin: 0 0 7px 0;
+}
+.our-team .rollno{
+    display: block;
+    font-size: 15px;
+    color: #000080;
+    text-transform: capitalize;
+    margin-bottom: 15px;
+}

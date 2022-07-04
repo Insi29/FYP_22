@@ -1,0 +1,31 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family:Georgia, 'Times New Roman', Times, serif 
+}
+
+.topnav {
+    overflow: hidden;
+    background: linear-gradient(30deg, #b2d3e8,#000080);
+    font-weight: 700;
+    
+}
+
+.topnav a {
+    margin-top: 8px;
+    float: right;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 18px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+.logo {
+    float: left;
+    width: 130px;
+    cursor: pointer;
+
+}
