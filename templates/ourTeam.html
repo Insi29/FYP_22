@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Team</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href={% static 'css/styles_our_team.css' %} >
-    <link rel="stylesheet" type="text/css" href={% static 'css/styles_topnav.css' %} >
+    <link rel="stylesheet" type="text/css" href={% static 'css/ourTeamStyle.css' %} >
+    <link rel="stylesheet" type="text/css" href={% static 'css/topnavStyle.css' %} >
 </head>
 <body>
     <div class="topnav">
         <img src={% static 'images/logo.png' %} style="width: 130px;" class="logo" />
         <a href={% url "improvements" %}>Improvements</a>
-        <a href={% url "our_team" %}>Team</a> 
+        <a href={% url "ourTeam" %}>Team</a> 
         <a href={% url "about" %}>About</a>
         <a href={% url "home" %}>Home</a>
         

@@ -1,68 +1,48 @@
 from collections import deque
-
 import cv2
 import mediapipe as mp
 import numpy as np
 from src.utils.txttspeech import ttsp
-
 import ctypes
 #from MathewModel import MathewModel
 from src.utils.cv_utils import get_idx_to_coordinates, rescale_frame
-
-
 from src.utils.ocr import ocr
+#from src.utils.wordRecognition import word_recog_predict
 
-
-
-class MathewApp:
-    def __init__(self):
+class airWriting:
+    def __init__(self,method):
         #Initialization of Media Pipe
         self.mp_drawing = mp.solutions.drawing_utils
         self.mp_hands = mp.solutions.hands
-       # self.mathew_model = MathewModel()
-
-    def run(self):
-        frame_count = 0
-        
-        #res = 0
-        abc=""
-        #Hand Detection
+        self.method=method.upper() #Capitalize the method Name
+    
+    def handTracking(self):
+        #Hand Detection using Media Pipe
         hands = self.mp_hands.Hands(
             min_detection_confidence=0.7, min_tracking_confidence=0.7)
         hand_landmark_drawing_spec = self.mp_drawing.DrawingSpec(thickness=5, circle_radius=5)
         hand_connection_drawing_spec = self.mp_drawing.DrawingSpec(thickness=10, circle_radius=10)
-        ####
         WINDOW_NAME = 'Air Writing'
-        ####
         cap = cv2.VideoCapture(0)
-        #####
         cv2.namedWindow(WINDOW_NAME, cv2.WND_PROP_FULLSCREEN)
         cv2.setWindowProperty(WINDOW_NAME, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
-        #####
         pts = deque(maxlen=512)
-        # blackboard = np.zeros((1080, 1920, 3), dtype=np.uint8)
         blackboard = np.zeros((720, 1280, 3), dtype=np.uint8)+255
-        char = np.zeros((200, 200, 3), dtype=np.uint8)
-        #pred_class = 0
         break_taken = False
-        res_list = deque(maxlen=512)
         img_counter=0
-        # Check if the webcam is opened correctly
+        frame_count = 0
+        word_predicted=""
         if not cap.isOpened():
             raise IOError("Cannot open webcam!")
         while cap.isOpened():
             # get Screen Size
-            #####
             user32 = ctypes.windll.user32
             screen_width, screen_height = user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)
-            ######
             idx_to_coordinates = {}
             ret, image = cap.read()
             image_height, image_width, _ = image.shape
-
             scaleWidth = float(screen_width)/float(image_width)
             scaleHeight = float(screen_height)/float(image_height)
-
             if scaleHeight>scaleWidth:
                     imgScale = scaleWidth
 
@@ -71,8 +51,7 @@ class MathewApp:
             newX,newY = image.shape[1]*imgScale, image.shape[0]*imgScale
             image = cv2.resize(image,(int(newX),int(newY)))
             image = cv2.flip(image, 1)
-            image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-            
+            image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB) 
             results_hand = hands.process(image)
             image.flags.writeable = True
             image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
@@ -85,7 +64,6 @@ class MathewApp:
                         landmark_drawing_spec=hand_landmark_drawing_spec,
                         connection_drawing_spec=hand_connection_drawing_spec)
                     idx_to_coordinates = get_idx_to_coordinates(image, results_hand)
-                    #print('Cordinates:',idx_to_coordinates)
             if 8 in idx_to_coordinates and 17 in idx_to_coordinates and idx_to_coordinates[17][0] > \
                     idx_to_coordinates[8][0]:    
                 frame_count = 0
@@ -118,59 +96,50 @@ class MathewApp:
                         frame_count = 0
                         continue
                     if len(blackboard_cnts) >= 1:
-                        res_list = []
                         for cnt in blackboard_cnts:
                             if cv2.contourArea(cnt) > 1000:
-                                 x, y, w, h = cv2.boundingRect(cnt)
                                  frame_count = 0
-                                ###commented above lines for some check
                     pts = deque(maxlen=512)
-                    # blackboard = np.zeros((1080, 1920, 3), dtype=np.uint8)
                     blackboard = np.zeros((720, 1280, 3), dtype=np.uint8)+255
-                    abc=""
-            pos = 0
-            #if len(res_list) > 0:
-                #res = solve_eqn(res_list)
-                #res_list.clear()
-                #Captures images of frames, Modularized
-            #bb_img_name=capture(blackboard,img_counter)
+                    word_predicted=""
             
-          
             k=cv2.waitKey(5)
             if k & 0xFF == 27: #esc pressed which closes the screen
                 break
-            elif k%256 == 32:
-                #SPACE pressed
-                img_name = "opencv_frame{}.png".format(img_counter)
+            #SPACE pressed
+            if k%256 == 32:
+                img_name = "website/frames/opencv_frame{}.png".format(img_counter)
                 cv2.imwrite(img_name, blackboard)
-                # print("{} written!".format(img_name))
                 img_counter += 1
-                
-                #prediction of text
-                res=ocr(img_name)
-                if res is None:
-                    result='Try Again'
+                if self.method == "OCR":
+                    #OCR prediction of text
+                    prediction=ocr(img_name)
+                    if prediction is None:
+                        result='Try Again'
+                    else:
+                        result=str(prediction)
+                    word_predicted+="Text="+result
+                    #Text to Speech
+                    ttsp(result)
+                elif self.method == "ML":
+                    #ML prediction of text
+                    prediction=ocr(img_name)
+                    word_predicted+="Text="+prediction
+                    #Text to Speech
+                    ttsp(prediction)
                 else:
-                    result=str(res)
-                abc+="Text="+result
-                #Text to Speech
-                ttsp(result)
+                    self.method="OCR"
+
                 
-                #return res
-                
-            image = cv2.putText(image, abc ,  (200, 90),
+            image = cv2.putText(image, word_predicted ,  (200, 90),
                                      cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
             
-            image = cv2.putText(image, "OCR", (400, 60),
+            image = cv2.putText(image, self.method, (400, 60),
                                     cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 255), 3)
-            #####
             cv2.imshow(WINDOW_NAME,image)
-            #####
             cv2.imshow("BB", rescale_frame(blackboard, percent=100))
            
            
         hands.close()
         cap.release()
-a=MathewApp()
-output=a.run()
-#print(output)
+
