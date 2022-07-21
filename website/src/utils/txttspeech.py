@@ -1,11 +1,10 @@
-# importing the pyttsx library
-#https://www.geeksforgeeks.org/python-text-to-speech-pyttsx-module/
-#https://www.geeksforgeeks.org/convert-text-speech-python/
+#Import Library
 import pyttsx3
 
 def ttsp(txt):
+    #Initialize 
     engine = pyttsx3.init()
-    # testing
+    #Converts text to Speech
     engine.say("The predicted word is")
     engine.say(txt)
     engine.say("Thank you")

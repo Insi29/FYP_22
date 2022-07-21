@@ -1,8 +1,8 @@
+#Import Library
 import cv2
 from mediapipe.python.solutions.drawing_utils import _normalized_to_pixel_coordinates
 
-
-def get_idx_to_coordinates(image, results, VISIBILITY_THRESHOLD=0.5, PRESENCE_THRESHOLD=0.5):
+def getIdxToCoordinates(image, results, VISIBILITY_THRESHOLD=0.5, PRESENCE_THRESHOLD=0.5):
     idx_to_coordinates = {}
     image_rows, image_cols, _ = image.shape
     try:
@@ -20,8 +20,7 @@ def get_idx_to_coordinates(image, results, VISIBILITY_THRESHOLD=0.5, PRESENCE_TH
         pass
     return idx_to_coordinates
 
-
-def rescale_frame(frame, percent=75):
+def rescaleFrame(frame, percent=75):
     width = int(frame.shape[1] * percent / 100)
     height = int(frame.shape[0] * percent / 100)
     dim = (width, height)

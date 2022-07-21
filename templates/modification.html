@@ -4,11 +4,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modification</title>
-    
     <!-- <link rel="stylesheet" type="text/css" href={% static 'css/modification.css' %} > -->  
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href={% static 'css/styles_topnav.css' %} >
+    <link rel="stylesheet" type="text/css" href={% static 'css/topnavStyle.css' %} >
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -19,7 +18,7 @@
     <div class="topnav">
         <img src={% static 'images/logo.png' %} style="width: 130px;"class="logo" />
         <a href={% url "modification" %}>Modification</a>
-        <a href={% url "our_team" %}>Team</a> 
+        <a href={% url "ourTeam" %}>Team</a> 
         <a href={% url "about" %}>About</a>
         <a href={% url "home" %}>Home</a>
     </div>
@@ -50,12 +49,6 @@
             </div>
           </div>
         </div>
-        <!-- <ul class="list-group col-sm-4">
-          <li data-target="#bootstrapNewsSlider" data-slide-to="0" class="list-group-item"><h4>Improvement #1</h4></li>
-          <li data-target="#bootstrapNewsSlider" data-slide-to="1" class="list-group-item"><h4>Improvement #2</h4></li>
-          <li data-target="#bootstrapNewsSlider" data-slide-to="2" class="list-group-item"><h4>Improvement #3</h4></li>
-          <li data-target="#bootstrapNewsSlider" data-slide-to="3" class="list-group-item"><h4>Improvement #4</h4></li>
-        </ul> -->
         <div class="carousel-controls">
             <a class="left carousel-control" href="#bootstrapNewsSlider" data-slide="prev">
               <span class="glyphicon glyphicon-chevron-left"></span>
