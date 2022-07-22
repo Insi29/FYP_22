@@ -3,11 +3,10 @@ from collections import deque
 import cv2
 import mediapipe as mp
 import numpy as np
-from src.utils.txttspeech import ttsp
-import ctypes
-from src.utils.cv_utils import getIdxToCoordinates, rescaleFrame
-from src.utils.ocr import ocr
-from src.utils.wordRecognition import word_recog_predict
+from codeSource.txtToSpeech import ttsp
+from codeSource.cvTools import getIdxToCoordinates, rescaleFrame
+from codeSource.ocr import ocr
+from codeSource.wordRecognition import word_recog_predict
 
 class airWriting:
     #Initialization

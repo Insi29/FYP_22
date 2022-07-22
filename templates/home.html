@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html>
 
+<html>
 <head> {% load static %} 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,16 +11,13 @@
     <link rel="stylesheet" type="text/css" href={% static 'css/homeStyle.css' %} >
     <link rel="stylesheet" type="text/css" href={% static 'css/topnavStyle.css' %} >
 </head>
-
 <body>
     <div class="topnav"   >
         <img src={% static 'images/logo.png' %}  style="width: 130px;" class="logo" />
         <a href={% url "improvements" %}>Improvements</a>
         <a href={% url "ourTeam" %}>Team</a>
         <a href={% url "about" %}>About</a>
-        <a href={% url "home" %}>Home</a>
-        
-        
+        <a href={% url "home" %}>Home</a>  
     </div>
     <div class="wrapper">
        <div class="background-container">
@@ -29,14 +26,11 @@
                     <video width='500' height= '300' controls>
                         <source src="{% static 'video/demo.mp4' type='video/mp4' %}">
                     </video>
-                 
                 </div>
-
                 <div class="button-container" >
                     <h1 style="font-family:Georgia, 'Times New Roman', Times, serif;color:navy;
                     font-weight: 700;font-size: 50px;">Live Demo</h1>
                     <form action={% url 'ocr_model' %} method="post" id="success_ocr"> 
-                        
                         {% csrf_token %}
                         <img src={% static 'images/arrr.png' %} />
                         <button class="btn btn-primary" style="font-size: 20px; width: 200;" >
@@ -44,7 +38,6 @@
                             Cursive Writing
                           </button>
                     </form>
-                   
                     <form action={% url 'ml_model' %} method="post" id="success_ml"> 
                         {% csrf_token %}
                         <img src={% static 'images/arrr.png' %} />
@@ -52,33 +45,25 @@
                             <span class="spinner-border spinner-border-sm" style='display:none' id="loading_ml"></span>
                             Simple Writing
                           </button>          
-                    </form>
-                     
+                    </form>   
                 </div>
-            
             </div>
         </div>
     </div>
+
 <!-- Loader work-->
-
-
-
 <script>
       $('#success_ocr').submit(function() {
         $('#loading_ocr').show(); 
-        return true;
-        
+        return true;  
       });  
       $(window).load(function() {
         $('#loading_ocr').hide();
-
       });
-     
 </script>
 <script>
         $('#success_ml').submit(function() {
             $('#loading_ml').show(); 
-        
           });  
           $(window).load(function() {
             $('#loading_ml').hide();
@@ -86,5 +71,4 @@
 </script>
 
 </body>
-
 </html>

@@ -1,39 +1,50 @@
-body { 
-	font-family: 'Abel', sans-serif !important;
+body {
+    font-family: 'Abel', sans-serif !important;
 }
-.heading h1{
-	color:#000;
-	font-weight: bold;
+
+.heading h1 {
+    color: #000;
+    font-weight: bold;
 }
 
 #bootstrapNewsSlider .carousel-caption {
-    left:0;
-	right:0;
-	bottom:0;
-	text-align:left;
-	padding:10px;
-	background:rgba(0,0,0,0.6);
-	text-shadow:none;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: left;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    text-shadow: none;
 }
+
 #bootstrapNewsSlider .list-group {
-	position:absolute;
-	top:0;
-	right:0;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
-#bootstrapNewsSlider .list-group-item{
-	padding:0px 10px !important;
-	border-radius:0px;
-	cursor:pointer;
-	height:90px;
-	color:#fff;
-	overflow: hidden;
-	background-color:#000 !important;
+
+#bootstrapNewsSlider .list-group-item {
+    padding: 0px 10px !important;
+    border-radius: 0px;
+    cursor: pointer;
+    height: 90px;
+    color: #fff;
+    overflow: hidden;
+    background-color: #000 !important;
 }
-@media (min-width: 992px) { 
-	#bootstrapNewsSlider {padding-right:33.3333%;}
-	#bootstrapNewsSlider .carousel-controls {display:none;} 	
+
+@media (min-width: 992px) {
+    #bootstrapNewsSlider {
+        padding-right: 33.3333%;
+    }
+    #bootstrapNewsSlider .carousel-controls {
+        display: none;
+    }
 }
-@media (max-width: 990px) { 
-	.carousel-caption p,
-	#bootstrapNewsSlider .list-group {display:none;} 
+
+@media (max-width: 990px) {
+    .carousel-caption p,
+    #bootstrapNewsSlider .list-group {
+        display: none;
+    }
 }
