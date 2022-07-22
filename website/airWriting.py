@@ -6,7 +6,7 @@ import numpy as np
 from codeSource.txtToSpeech import ttsp
 from codeSource.cvTools import getIdxToCoordinates, rescaleFrame
 from codeSource.ocr import ocr
-from codeSource.wordRecognition import word_recog_predict
+from codeSource.wordRecognition import wordRecogAndPredict
 
 class airWriting:
     #Initialization
@@ -133,7 +133,7 @@ class airWriting:
                     ttsp(result)
                 elif self.method == "ML":
                     #ML prediction of text
-                    prediction=word_recog_predict(img_name)
+                    prediction=wordRecogAndPredict(img_name)
                     word_predicted+="Text="+prediction
                     #Text to Speech
                     ttsp(prediction)

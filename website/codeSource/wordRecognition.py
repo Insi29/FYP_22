@@ -10,7 +10,7 @@ from keras.preprocessing import image as load_img
 from keras.preprocessing import image as img_to_array
 from tensorflow.python.keras.models import load_model
 
-def word_recog_predict(filename):
+def wordRecogAndPredict(filename):
     #Loading Model
     model=load_model('website/src/utils/my_model.h5')
     image = cv2.imread(filename)
